@@ -15,7 +15,6 @@ public class containsDuplicate_II {
             }
             map.put(val, i);
         }
-
         return false;
     }
 
