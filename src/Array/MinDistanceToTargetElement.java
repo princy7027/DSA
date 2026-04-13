@@ -20,7 +20,6 @@ public class MinDistanceToTargetElement {
         for(int i=0;i<n;i++){
             arr[i]=sc.nextInt();
         }
-
         int target=sc.nextInt();
         int start=sc.nextInt();
 
