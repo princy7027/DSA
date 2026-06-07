@@ -4,6 +4,29 @@ import java.util.Scanner;
 
 public class stringToInteger_atoi {
 
+    private static long helper(String s, int i, long num, int sign) {
+
+        int n = s.length();
+
+        if (i >= n || !Character.isDigit(s.charAt(i))) {
+            return num;
+        }
+
+        int digit = s.charAt(i) - '0';
+
+        num = num * 10 + digit;
+
+        // Overflow checks
+        if (sign == 1 && num > Integer.MAX_VALUE) {
+            return Integer.MAX_VALUE;
+        }
+
+        if (sign == -1 && num > 2147483648L) {
+            return Integer.MIN_VALUE;
+        }
+
+        return helper(s, i + 1, num, sign);
+    }
     public static int myAtoi(String s) {
         //if start by words - stop = return 0
         //whitespace - ignored
@@ -21,23 +44,8 @@ public class stringToInteger_atoi {
             i++;
         }
 
-        while (i<n && (s.charAt(i) == '0')){ i++;}
-
-        long num=0;
-        while(i< n && (Character.isDigit(s.charAt(i)))){
-            int digit=s.charAt(i) - '0';
-            num =num *10 + digit;
-
-            if(sign == 1 && num > Integer.MAX_VALUE){
-                return Integer.MAX_VALUE;
-            }
-            if(sign == -1 && -num < Integer.MIN_VALUE){
-                return Integer.MIN_VALUE;
-            }
-            i++;
-        }
-
-        return (int) (sign*num);
+        long num = helper(s, i, 0,sign);
+        return (int)(sign * num);
     }
 
     public static void main(String[] args){
