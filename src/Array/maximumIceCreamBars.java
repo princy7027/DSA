@@ -1,6 +1,6 @@
 package Array;
 
-import java.util.Arrays;
+//import java.util.Arrays;
 import java.util.Scanner;
 
 public class maximumIceCreamBars {
@@ -33,8 +33,8 @@ public class maximumIceCreamBars {
         }
 
         int ans=0;
-        for(int i=0;i<coins;i++){
-            if(freq[i] == 0) continue;;
+        for(int i=0;i<max;i++){
+            if(freq[i] == 0) continue;
             if(coins < i) break;
 
             int quantity=Math.min(freq[i], coins / i );
